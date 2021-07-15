@@ -139,7 +139,7 @@ spack install mrbayes%arm
 ```
 spack install mrbayes%nvhpc ^cmake%gcc ^python%gcc ^util-linux-uuid%gcc ^libbsd%gcc ^apr-util%gcc ^sqlite%gcc ^serf%gcc ^libbeagle%gcc
 ```
-> Yeah, I know *nvhpc* looks like the ship of Theseus.
+> Yeah, I know compiling by *nvhpc* looks like the ship of Theseus.
 ```
 [+]  cwgvvib  mrbayes@3.2.7a%nvhpc@21.2+beagle+mpi~readline arch=linux-amzn2-graviton2
 [+]  miuo6nu      ^libbeagle@3.1.2%gcc@10.3.0~cuda cuda_arch=none arch=linux-amzn2-graviton2
