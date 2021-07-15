@@ -20,17 +20,131 @@ Pull request for Spack recipe changes:
 
 
 
-#### Compiler 1
+#### Compiler 1: gcc@10.3.0
+```
+spack install mrbayes%gcc
+```
+```
+$ spack spec -Il mrbayes%gcc
+----------------------------------
+ -   74u7ov5  mrbayes@3.2.7a%gcc@10.3.0+beagle+mpi~readline arch=linux-amzn2-graviton2
+[+]  miuo6nu      ^libbeagle@3.1.2%gcc@10.3.0~cuda cuda_arch=none arch=linux-amzn2-graviton2
+[+]  jkuhz64          ^autoconf@2.69%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  ebhjpix              ^m4@1.4.18%gcc@10.3.0+sigsegv patches=3877ab548f88597ab2327a2230ee048d2d07ace1062efe81fc92e91b7f39cd00,fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8 arch=linux-amzn2-graviton2
+[+]  ltbv6bk                  ^libsigsegv@2.13%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  4m7exgb              ^perl@5.32.1%gcc@10.3.0+cpanm+shared+threads arch=linux-amzn2-graviton2
+[+]  y42m6yr                  ^berkeley-db@18.1.40%gcc@10.3.0+cxx~docs+stl patches=b231fcc4d5cff05e5c3a4814f6a5af0e9a966428dc2176540d2c05aff41de522 arch=linux-amzn2-graviton2
+[+]  rqrpmap                  ^bzip2@1.0.8%gcc@10.3.0~debug~pic+shared arch=linux-amzn2-graviton2
+[+]  2w7bert                      ^diffutils@3.7%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  y5ei3cm                          ^libiconv@1.16%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  wjwqncx                  ^gdbm@1.19%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  3zy7kxk                      ^readline@8.1%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  iwzirqc                          ^ncurses@6.2%gcc@10.3.0~symlinks+termlib abi=none arch=linux-amzn2-graviton2
+[+]  s4pw7zm                              ^pkgconf@1.7.4%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  qepjcvj                  ^zlib@1.2.11%gcc@10.3.0+optimize+pic+shared arch=linux-amzn2-graviton2
+[+]  xb2w5nc          ^automake@1.16.3%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  z2uysov          ^libtool@2.4.6%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  5g5g4bf          ^openjdk@11.0.0-2020-01-01%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  dh67fng          ^subversion@1.14.0%gcc@10.3.0~perl+serf arch=linux-amzn2-graviton2
+[+]  mjfwjv5              ^apr@1.7.0%gcc@10.3.0 patches=a4128488c546646b4a585c3d49706675b1c016139dd61bdd153fb3151bbcb12c arch=linux-amzn2-graviton2
+[+]  2non7qx                  ^util-linux-uuid@2.36.2%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  qbx5g7c              ^apr-util@1.6.1%gcc@10.3.0+crypto~gdbm~odbc~pgsql~sqlite arch=linux-amzn2-graviton2
+[+]  ychdz7l                  ^expat@2.4.1%gcc@10.3.0+libbsd arch=linux-amzn2-graviton2
+[+]  ourxkez                      ^libbsd@0.11.3%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  nssrqfc                          ^libmd@1.0.3%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  5i3lgfb                  ^openssl@1.1.1k%gcc@10.3.0~docs+systemcerts arch=linux-amzn2-graviton2
+[+]  pytpp72              ^lz4@1.9.3%gcc@10.3.0 libs=shared,static arch=linux-amzn2-graviton2
+[+]  onskchf              ^serf@1.3.9%gcc@10.3.0~debug patches=b6593a4dafea97d1bef13b5d57fecb1410f02452d7def51b31f76bf76a85c4ad arch=linux-amzn2-graviton2
+[+]  23v43px                  ^scons@3.1.2%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  s6xqcwm                      ^py-setuptools@50.3.2%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  62czasr                          ^python@3.8.11%gcc@10.3.0+bz2+ctypes+dbm~debug+libxml2+lzma~nis~optimizations+pic+pyexpat+pythoncmd+readline+shared+sqlite3+ssl~tix~tkinter~ucs4+uuid+zlib patches=0d98e93189bc278fbc37a50ed7f183bd8aaf249a8e1670a465f0db6bb4f8cf87 arch=linux-amzn2-graviton2
+[+]  fqlpcsl                              ^gettext@0.21%gcc@10.3.0+bzip2+curses+git~libunistring+libxml2+tar+xz arch=linux-amzn2-graviton2
+[+]  iyhm3wi                                  ^libxml2@2.9.10%gcc@10.3.0~python arch=linux-amzn2-graviton2
+[+]  ye3kcvv                                      ^xz@5.2.5%gcc@10.3.0~pic libs=shared,static arch=linux-amzn2-graviton2
+[+]  v6cutkh                                  ^tar@1.34%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  35cffos                              ^libffi@3.3%gcc@10.3.0 patches=26f26c6f29a7ce9bf370ad3ab2610f99365b4bdd7b82e7c31df41a3370d685c0 arch=linux-amzn2-graviton2
+[+]  2q753q6                              ^sqlite@3.35.5%gcc@10.3.0+column_metadata+fts~functions~rtree arch=linux-amzn2-graviton2
+[+]  azgubgn              ^utf8proc@2.4.0%gcc@10.3.0~ipo build_type=RelWithDebInfo arch=linux-amzn2-graviton2
+[+]  m7325ee                  ^cmake@3.20.5%gcc@10.3.0~doc+ncurses+openssl+ownlibs~qt build_type=Release arch=linux-amzn2-graviton2
+ -   zvamksn      ^openmpi@4.1.0%gcc@10.3.0~atomics~cuda~cxx~cxx_exceptions+gpfs~internal-hwloc~java~legacylaunchers~lustre~memchecker+pmi~singularity~sqlite3+static~thread_multiple+vt+wrapper-rpath fabrics=ofi patches=60ce20bc14d98c572ef7883b9fcd254c3f232c2f3a13377480f96466169ac4c8 schedulers=slurm arch=linux-amzn2-graviton2
+ -   cukmqbg          ^hwloc@2.5.0%gcc@10.3.0~cairo~cuda~gl~libudev+libxml2~netloc~nvml+pci+shared arch=linux-amzn2-graviton2
+[+]  asgtk6a              ^libpciaccess@0.16%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  4xr3hhh                  ^util-macros@1.19.3%gcc@10.3.0 arch=linux-amzn2-graviton2
+ -   tadxrfp          ^libevent@2.1.12%gcc@10.3.0+openssl arch=linux-amzn2-graviton2
+ -   72f5gvk          ^libfabric@1.11.1-aws%gcc@10.3.0~debug~kdreg fabrics=sockets,tcp,udp arch=linux-amzn2-graviton2
+ -   mhav5gn          ^numactl@2.0.14%gcc@10.3.0 patches=4e1d78cbbb85de625bad28705e748856033eaafab92a66dffd383a3d7e00cc94,62fc8a8bf7665a60e8f4c93ebbd535647cebf74198f7afafec4c085a8825c006 arch=linux-amzn2-graviton2
+[+]  wturp6c          ^openssh@8.5p1%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  ivotdt7              ^libedit@3.1-20210216%gcc@10.3.0 arch=linux-amzn2-graviton2
+ -   wqpuvmh          ^slurm@20-02-4-1%gcc@10.3.0~gtk~hdf5~hwloc~mariadb~pmix+readline~restd sysconfdir=PREFIX/etc arch=linux-amzn2-graviton2
 
 ```
-spack install <app>%<compiler1>
+#### Compiler 2: arm@21.0.0.879
+```
+spack install mrbayes%arm
 ```
 
 ```
-$ spack spec -Il <app>%<compiler1>
+$ spack spec -Il mrbayes%arm
+----------------------------------
 
 ```
 
+#### Compiler 3: nvhpc@21.2
+```
+spack install mrbayes%nvhpc ^cmake%gcc ^python%gcc ^util-linux-uuid%gcc ^libbsd%gcc ^apr-util%gcc ^sqlite%gcc ^serf%gcc ^libbeagle%gcc
+```
+> Yeah, I know *nvhpc* looks like the ship of Theseus.
+```
+ -   cwgvvib  mrbayes@3.2.7a%nvhpc@21.2+beagle+mpi~readline arch=linux-amzn2-graviton2
+[+]  miuo6nu      ^libbeagle@3.1.2%gcc@10.3.0~cuda cuda_arch=none arch=linux-amzn2-graviton2
+[+]  jkuhz64          ^autoconf@2.69%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  ebhjpix              ^m4@1.4.18%gcc@10.3.0+sigsegv patches=3877ab548f88597ab2327a2230ee048d2d07ace1062efe81fc92e91b7f39cd00,fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8 arch=linux-amzn2-graviton2
+[+]  ltbv6bk                  ^libsigsegv@2.13%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  4m7exgb              ^perl@5.32.1%gcc@10.3.0+cpanm+shared+threads arch=linux-amzn2-graviton2
+[+]  y42m6yr                  ^berkeley-db@18.1.40%gcc@10.3.0+cxx~docs+stl patches=b231fcc4d5cff05e5c3a4814f6a5af0e9a966428dc2176540d2c05aff41de522 arch=linux-amzn2-graviton2
+[+]  rqrpmap                  ^bzip2@1.0.8%gcc@10.3.0~debug~pic+shared arch=linux-amzn2-graviton2
+[+]  2w7bert                      ^diffutils@3.7%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  y5ei3cm                          ^libiconv@1.16%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  wjwqncx                  ^gdbm@1.19%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  3zy7kxk                      ^readline@8.1%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  iwzirqc                          ^ncurses@6.2%gcc@10.3.0~symlinks+termlib abi=none arch=linux-amzn2-graviton2
+[+]  s4pw7zm                              ^pkgconf@1.7.4%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  qepjcvj                  ^zlib@1.2.11%gcc@10.3.0+optimize+pic+shared arch=linux-amzn2-graviton2
+[+]  xb2w5nc          ^automake@1.16.3%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  z2uysov          ^libtool@2.4.6%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  5g5g4bf          ^openjdk@11.0.0-2020-01-01%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  dh67fng          ^subversion@1.14.0%gcc@10.3.0~perl+serf arch=linux-amzn2-graviton2
+[+]  mjfwjv5              ^apr@1.7.0%gcc@10.3.0 patches=a4128488c546646b4a585c3d49706675b1c016139dd61bdd153fb3151bbcb12c arch=linux-amzn2-graviton2
+[+]  2non7qx                  ^util-linux-uuid@2.36.2%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  qbx5g7c              ^apr-util@1.6.1%gcc@10.3.0+crypto~gdbm~odbc~pgsql~sqlite arch=linux-amzn2-graviton2
+[+]  ychdz7l                  ^expat@2.4.1%gcc@10.3.0+libbsd arch=linux-amzn2-graviton2
+[+]  ourxkez                      ^libbsd@0.11.3%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  nssrqfc                          ^libmd@1.0.3%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  5i3lgfb                  ^openssl@1.1.1k%gcc@10.3.0~docs+systemcerts arch=linux-amzn2-graviton2
+[+]  pytpp72              ^lz4@1.9.3%gcc@10.3.0 libs=shared,static arch=linux-amzn2-graviton2
+[+]  onskchf              ^serf@1.3.9%gcc@10.3.0~debug patches=b6593a4dafea97d1bef13b5d57fecb1410f02452d7def51b31f76bf76a85c4ad arch=linux-amzn2-graviton2
+[+]  23v43px                  ^scons@3.1.2%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  s6xqcwm                      ^py-setuptools@50.3.2%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  62czasr                          ^python@3.8.11%gcc@10.3.0+bz2+ctypes+dbm~debug+libxml2+lzma~nis~optimizations+pic+pyexpat+pythoncmd+readline+shared+sqlite3+ssl~tix~tkinter~ucs4+uuid+zlib patches=0d98e93189bc278fbc37a50ed7f183bd8aaf249a8e1670a465f0db6bb4f8cf87 arch=linux-amzn2-graviton2
+[+]  fqlpcsl                              ^gettext@0.21%gcc@10.3.0+bzip2+curses+git~libunistring+libxml2+tar+xz arch=linux-amzn2-graviton2
+[+]  iyhm3wi                                  ^libxml2@2.9.10%gcc@10.3.0~python arch=linux-amzn2-graviton2
+[+]  ye3kcvv                                      ^xz@5.2.5%gcc@10.3.0~pic libs=shared,static arch=linux-amzn2-graviton2
+[+]  v6cutkh                                  ^tar@1.34%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  35cffos                              ^libffi@3.3%gcc@10.3.0 patches=26f26c6f29a7ce9bf370ad3ab2610f99365b4bdd7b82e7c31df41a3370d685c0 arch=linux-amzn2-graviton2
+[+]  2q753q6                              ^sqlite@3.35.5%gcc@10.3.0+column_metadata+fts~functions~rtree arch=linux-amzn2-graviton2
+[+]  azgubgn              ^utf8proc@2.4.0%gcc@10.3.0~ipo build_type=RelWithDebInfo arch=linux-amzn2-graviton2
+[+]  m7325ee                  ^cmake@3.20.5%gcc@10.3.0~doc+ncurses+openssl+ownlibs~qt build_type=Release arch=linux-amzn2-graviton2
+ -   ziwrq5e      ^openmpi@4.1.0%nvhpc@21.2~atomics~cuda~cxx~cxx_exceptions+gpfs~internal-hwloc~java~legacylaunchers~lustre~memchecker+pmi~singularity~sqlite3+static~thread_multiple+vt+wrapper-rpath fabrics=ofi patches=60ce20bc14d98c572ef7883b9fcd254c3f232c2f3a13377480f96466169ac4c8,fba0d3a784a9723338722b48024a22bb32f6a951db841a4e9f08930a93f41d7a schedulers=slurm arch=linux-amzn2-graviton2
+ -   f5xzi2q          ^hwloc@2.5.0%nvhpc@21.2~cairo~cuda~gl~libudev+libxml2~netloc~nvml+pci+shared arch=linux-amzn2-graviton2
+[+]  e4m4ued              ^libpciaccess@0.16%nvhpc@21.2 patches=6e08dc445ece06e9e8b1344397f2d3f169005703ddc0f2ae24f366cde78c7377 arch=linux-amzn2-graviton2
+[+]  4imdwuy                  ^util-macros@1.19.3%nvhpc@21.2 arch=linux-amzn2-graviton2
+[+]  qmlezth          ^libevent@2.1.12%nvhpc@21.2+openssl arch=linux-amzn2-graviton2
+[+]  xl6zavq          ^libfabric@1.11.1-aws%nvhpc@21.2~debug~kdreg fabrics=sockets,tcp,udp arch=linux-amzn2-graviton2
+[+]  5yq4tpw          ^numactl@2.0.14%nvhpc@21.2 patches=4e1d78cbbb85de625bad28705e748856033eaafab92a66dffd383a3d7e00cc94,62fc8a8bf7665a60e8f4c93ebbd535647cebf74198f7afafec4c085a8825c006 arch=linux-amzn2-graviton2
+[+]  wturp6c          ^openssh@8.5p1%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  ivotdt7              ^libedit@3.1-20210216%gcc@10.3.0 arch=linux-amzn2-graviton2
+[+]  zehhooy          ^slurm@20-02-4-1%nvhpc@21.2~gtk~hdf5~hwloc~mariadb~pmix+readline~restd sysconfdir=PREFIX/etc arch=linux-amzn2-graviton2
+```
 ## Test Case 1
 
 [ReFrame Benchmark 1](#)
