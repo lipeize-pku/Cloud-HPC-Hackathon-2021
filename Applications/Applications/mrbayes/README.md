@@ -95,7 +95,7 @@ spack install mrbayes%nvhpc ^cmake%gcc ^python%gcc ^util-linux-uuid%gcc ^libbsd%
 ```
 > Yeah, I know *nvhpc* looks like the ship of Theseus.
 ```
- -   cwgvvib  mrbayes@3.2.7a%nvhpc@21.2+beagle+mpi~readline arch=linux-amzn2-graviton2
+[+]  cwgvvib  mrbayes@3.2.7a%nvhpc@21.2+beagle+mpi~readline arch=linux-amzn2-graviton2
 [+]  miuo6nu      ^libbeagle@3.1.2%gcc@10.3.0~cuda cuda_arch=none arch=linux-amzn2-graviton2
 [+]  jkuhz64          ^autoconf@2.69%gcc@10.3.0 arch=linux-amzn2-graviton2
 [+]  ebhjpix              ^m4@1.4.18%gcc@10.3.0+sigsegv patches=3877ab548f88597ab2327a2230ee048d2d07ace1062efe81fc92e91b7f39cd00,fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8 arch=linux-amzn2-graviton2
@@ -134,8 +134,8 @@ spack install mrbayes%nvhpc ^cmake%gcc ^python%gcc ^util-linux-uuid%gcc ^libbsd%
 [+]  2q753q6                              ^sqlite@3.35.5%gcc@10.3.0+column_metadata+fts~functions~rtree arch=linux-amzn2-graviton2
 [+]  azgubgn              ^utf8proc@2.4.0%gcc@10.3.0~ipo build_type=RelWithDebInfo arch=linux-amzn2-graviton2
 [+]  m7325ee                  ^cmake@3.20.5%gcc@10.3.0~doc+ncurses+openssl+ownlibs~qt build_type=Release arch=linux-amzn2-graviton2
- -   ziwrq5e      ^openmpi@4.1.0%nvhpc@21.2~atomics~cuda~cxx~cxx_exceptions+gpfs~internal-hwloc~java~legacylaunchers~lustre~memchecker+pmi~singularity~sqlite3+static~thread_multiple+vt+wrapper-rpath fabrics=ofi patches=60ce20bc14d98c572ef7883b9fcd254c3f232c2f3a13377480f96466169ac4c8,fba0d3a784a9723338722b48024a22bb32f6a951db841a4e9f08930a93f41d7a schedulers=slurm arch=linux-amzn2-graviton2
- -   f5xzi2q          ^hwloc@2.5.0%nvhpc@21.2~cairo~cuda~gl~libudev+libxml2~netloc~nvml+pci+shared arch=linux-amzn2-graviton2
+[+]  ziwrq5e      ^openmpi@4.1.0%nvhpc@21.2~atomics~cuda~cxx~cxx_exceptions+gpfs~internal-hwloc~java~legacylaunchers~lustre~memchecker+pmi~singularity~sqlite3+static~thread_multiple+vt+wrapper-rpath fabrics=ofi patches=60ce20bc14d98c572ef7883b9fcd254c3f232c2f3a13377480f96466169ac4c8,fba0d3a784a9723338722b48024a22bb32f6a951db841a4e9f08930a93f41d7a schedulers=slurm arch=linux-amzn2-graviton2
+[+]  f5xzi2q          ^hwloc@2.5.0%nvhpc@21.2~cairo~cuda~gl~libudev+libxml2~netloc~nvml+pci+shared arch=linux-amzn2-graviton2
 [+]  e4m4ued              ^libpciaccess@0.16%nvhpc@21.2 patches=6e08dc445ece06e9e8b1344397f2d3f169005703ddc0f2ae24f366cde78c7377 arch=linux-amzn2-graviton2
 [+]  4imdwuy                  ^util-macros@1.19.3%nvhpc@21.2 arch=linux-amzn2-graviton2
 [+]  qmlezth          ^libevent@2.1.12%nvhpc@21.2+openssl arch=linux-amzn2-graviton2
