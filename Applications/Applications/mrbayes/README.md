@@ -193,6 +193,8 @@ spack install mrbayes%nvhpc ^cmake%gcc ^python%gcc ^util-linux-uuid%gcc ^libbsd%
 ```
 ## Test Case 1
 
+> mb cynmix.nex
+
 [ReFrame Benchmark 1](#)
 
 ```
@@ -229,8 +231,6 @@ List of top-10 functions / code locations from a serial profile.
 
 Use the GCC compiler.
 
-#### Testcase 1
-
 Profiling command used:
 ```
 map --profile srun -N 1 -n 1 mb cynmix.nex
@@ -249,7 +249,69 @@ map --profile srun -N 1 -n 1 mb cynmix.nex
 | 9        | __exp_finite | 1.2% |
 | 10       | CondLikeRoot_Std | 0.9% |
 
-#### Testcase 2
+### Full Node Hot-spot Profile
+
+List of top-10 functions / code locations from a full node profile.
+
+Use GCC compiler.
+
+Profiling command used:
+```
+map --profile srun -N 1 -n 64 mb cynmix.nex
+```
+
+| Position | Routine             | Time (%) | MPI (%) |
+| -------- | ------------------- | -------- | ------- |
+| 1        | MPI_Allreduce       | 89.6%    | 89.6%   |
+| 2        | pthread_cond_signal | 5.9%     |         |
+| 3        | MPI_Waitall         | 0.9%     | 0.9%    |
+| 4        | __log_finite        | 0.4%     |         |
+| 5        | CondLikeDown_Std    | 0.3%     |         |
+| 6        | Move_ParsSPR        | 0.3%     |         |
+| 7        | open64              | 0.2%     |         |
+| 8        | GetFitchPartials    | 0.2%     |         |
+| 9        | MPI_Isend           | 0.2%     | 0.2%    |
+| 10       | CondLikeScaler_Std  | 0.2%     |         |
+
+## Test Case 2
+
+> mb hym.nex
+
+[ReFrame Benchmark 1](#)
+
+```
+../bin/reframe -c benchmark.py -r --performance-report
+```
+
+### Validation
+
+Details of the validation for `Test Case 1`.
+
+
+### ReFrame Output
+
+```
+==============================================================================
+PERFORMANCE REPORT
+------------------------------------------------------------------------------
+     **** 
+------------------------------------------------------------------------------
+```
+
+### On-node Compiler Comparison
+
+Performance comparison of two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+|       |            |            |
+
+
+### Serial Hot-spot Profile
+
+List of top-10 functions / code locations from a serial profile.
+
+Use the GCC compiler.
 
 Profiling command used:
 
@@ -270,77 +332,11 @@ map --profile srun -N 1 -n 1 mb hym.nex
 | 9        | __exp_finite                                                 | 2.9%     |
 | 10       | beagle::cpu::BeagleCPU4StateImpl<float, 1, 0>::calcEdgeLogLikelihoods(int, int, int, int, int, int, double*) | 2.7%     |
 
-#### Testcase 3
-
-Profiling command used:
-
-```
-map --profile srun -N 1 -n 1 mb kim.nex
-```
-
-| Position | Routine                | Time (%) |
-| -------- | ---------------------- | -------- |
-| 1        | CheckExpandedModels    | 50.0%    |
-| 2        | ProtID [inlined]       | 16.7%    |
-| 3        | \_\_GI\_\_IO_file_sync | 16.7%    |
-| 4        | MPI_Finalize           | 16.7%    |
-| 5        | main                   | <0.1%    |
-| 6        | CommandLine            | <0.1%    |
-| 7        | ParseCommand           | <0.1%    |
-| 8        | DoExecute              | <0.1%    |
-| 9        | DoMatrixParm           | <0.1%    |
-| 10       | CharacterCode          | <0.1%    |
-
-#### Testcase 4
-
-Profiling command used:
-
-```
-map --profile srun -N 1 -n 1 mb primates.nex
-```
-
-| Position | Routine                                                      | Time (%) |
-| -------- | ------------------------------------------------------------ | -------- |
-| 1        | pthread_cond_signal                                          | 62.8%    |
-| 2        | __log_finite                                                 | 11.2%    |
-| 3        | beagle::cpu::BeagleCPU4StateImpl<float, 1, 0>::calcEdgeLogLikelihoods(int, int, int, int, int, int, double*) | 7.6%     |
-| 4        | Move_ParsSPR                                                 | 2.6%     |
-| 5        | TreeLikelihood_Beagle                                        | 2.1%     |
-| 6        | beagle::cpu::EigenDecompositionCube<float, 1>::updateTransitionMatrices(int, int const*, int const*, int const*, double const*, double const*, float**, int) | 1.9%     |
-| 7        | log                                                          | 1.2%     |
-| 8        | GetFitchPartials                                             | 1.2%     |
-| 9        | __exp_finite                                                 | 1.1%     |
-| 10       | GetParsFP                                                    | 0.9%     |
-
-
-
 ### Full Node Hot-spot Profile
 
 List of top-10 functions / code locations from a full node profile.
 
 Use GCC compiler.
-
-#### Testcase 1
-
-Profiling command used:
-```
-map --profile srun -N 1 -n 64 mb cynmix.nex
-```
-
-| Position | Routine             | Time (%) | MPI (%) |
-| -------- | ------------------- | -------- | ------- |
-| 1        | MPI_Allreduce       | 89.6%    | 89.6%   |
-| 2        | pthread_cond_signal | 5.9%     |         |
-| 3        | MPI_Waitall         | 0.9%     | 0.9%    |
-| 4        | __log_finite        | 0.4%     |         |
-| 5        | CondLikeDown_Std    | 0.3%     |         |
-| 6        | Move_ParsSPR        | 0.3%     |         |
-| 7        | open64              | 0.2%     |         |
-| 8        | GetFitchPartials    | 0.2%     |         |
-| 9        | MPI_Isend           | 0.2%     | 0.2%    |
-| 10       | CondLikeScaler_Std  | 0.2%     |         |
-
-#### Testcase 2
 
 Profiling command used:
 
@@ -361,7 +357,70 @@ map --profile srun -N 1 -n 64 mb hym.nex
 | 9        | beagle::cpu::EigenDecompositionCube<float, 1>::updateTransitionMatrices(int, int const*, int const*, int const*, double const*, double const*, float**, int) | 1.4%     |         |
 | 10       | beagle::cpu::BeagleCPU4StateImpl<float, 1, 0>::calcPartialsPartials(float*, float const*, float const*, float const*, float const*, int, int) | 1.4%     |         |
 
-#### Testcase 3
+## Test Case 3
+
+> mb kim.nex
+
+[ReFrame Benchmark 1](#)
+
+```
+../bin/reframe -c benchmark.py -r --performance-report
+```
+
+### Validation
+
+Details of the validation for `Test Case 1`.
+
+
+### ReFrame Output
+
+```
+==============================================================================
+PERFORMANCE REPORT
+------------------------------------------------------------------------------
+     **** 
+------------------------------------------------------------------------------
+```
+
+### On-node Compiler Comparison
+
+Performance comparison of two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+|       |            |            |
+
+
+### Serial Hot-spot Profile
+
+List of top-10 functions / code locations from a serial profile.
+
+Use the GCC compiler.
+
+Profiling command used:
+
+```
+map --profile srun -N 1 -n 1 mb kim.nex
+```
+
+| Position | Routine                | Time (%) |
+| -------- | ---------------------- | -------- |
+| 1        | CheckExpandedModels    | 50.0%    |
+| 2        | ProtID [inlined]       | 16.7%    |
+| 3        | \_\_GI\_\_IO_file_sync | 16.7%    |
+| 4        | MPI_Finalize           | 16.7%    |
+| 5        | main                   | <0.1%    |
+| 6        | CommandLine            | <0.1%    |
+| 7        | ParseCommand           | <0.1%    |
+| 8        | DoExecute              | <0.1%    |
+| 9        | DoMatrixParm           | <0.1%    |
+| 10       | CharacterCode          | <0.1%    |
+
+### Full Node Hot-spot Profile
+
+List of top-10 functions / code locations from a full node profile.
+
+Use GCC compiler.
 
 Profiling command used:
 
@@ -382,7 +441,70 @@ map --profile srun -N 1 -n 64 mb kim.nex
 | 9        | strlen                      | 0.7%     |         |
 | 10       | \_\_GI\_\_IO_file_underflow | 0.6%     |         |
 
-#### Testcase 4
+## Test Case 4
+
+> mb primates.nex
+
+[ReFrame Benchmark 1](#)
+
+```
+../bin/reframe -c benchmark.py -r --performance-report
+```
+
+### Validation
+
+Details of the validation for `Test Case 1`.
+
+
+### ReFrame Output
+
+```
+==============================================================================
+PERFORMANCE REPORT
+------------------------------------------------------------------------------
+     **** 
+------------------------------------------------------------------------------
+```
+
+### On-node Compiler Comparison
+
+Performance comparison of two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+|       |            |            |
+
+
+### Serial Hot-spot Profile
+
+List of top-10 functions / code locations from a serial profile.
+
+Use the GCC compiler.
+
+Profiling command used:
+
+```
+map --profile srun -N 1 -n 1 mb primates.nex
+```
+
+| Position | Routine                                                      | Time (%) |
+| -------- | ------------------------------------------------------------ | -------- |
+| 1        | pthread_cond_signal                                          | 62.8%    |
+| 2        | __log_finite                                                 | 11.2%    |
+| 3        | beagle::cpu::BeagleCPU4StateImpl<float, 1, 0>::calcEdgeLogLikelihoods(int, int, int, int, int, int, double*) | 7.6%     |
+| 4        | Move_ParsSPR                                                 | 2.6%     |
+| 5        | TreeLikelihood_Beagle                                        | 2.1%     |
+| 6        | beagle::cpu::EigenDecompositionCube<float, 1>::updateTransitionMatrices(int, int const*, int const*, int const*, double const*, double const*, float**, int) | 1.9%     |
+| 7        | log                                                          | 1.2%     |
+| 8        | GetFitchPartials                                             | 1.2%     |
+| 9        | __exp_finite                                                 | 1.1%     |
+| 10       | GetParsFP                                                    | 0.9%     |
+
+### Full Node Hot-spot Profile
+
+List of top-10 functions / code locations from a full node profile.
+
+Use GCC compiler.
 
 Profiling command used:
 
