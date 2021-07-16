@@ -97,8 +97,9 @@ spack install examl%arm
 ```
 #### Compiler 3: nvhpc
 
-
 ## Test Case 1
+
+> examl -t /home/peize/examl-test/case1/49.tree -m PSR -s /home/peize/examl-test/case1/49.unpartitioned.binary -n T1
 
 [ReFrame Benchmark 1](#)
 
@@ -136,21 +137,21 @@ List of top-10 functions / code locations from a serial profile.
 
 Profiling command used:
 ```
-:
+map --profile srun -N 1 -n 1 examl -t /home/peize/examl-test/case1/49.tree -m PSR -s /home/peize/examl-test/case1/49.unpartitioned.binary -n T1
 ```
 
-| Position | Routine | Time (s) | Time (%) |
-|----------|---------|----------|----------|
-| 1        |         |          |          |
-| 2        |         |          |          |
-| 3        |         |          |          |
-| 4        |         |          |          |
-| 5        |         |          |          |
-| 6        |         |          |          |
-| 7        |         |          |          |
-| 8        |         |          |          |
-| 9        |         |          |          |
-| 10       |         |          |          |
+| Position | Routine                | Time (%) |
+| -------- | ---------------------- | -------- |
+| 1        | newviewGTRCAT          | 36.8%    |
+| 2        | execCore               | 24.3%    |
+| 3        | exp                    | 11.2%    |
+| 4        | __exp_finite           | 7.8%     |
+| 5        | makenewzIterative      | 3.3%     |
+| 6        | MPI_Allreduce          | 3.3%     |
+| 7        | __log_finite           | 3.1%     |
+| 8        | newviewIterative       | 2.7%     |
+| 9        | log                    | 2.0%     |
+| 10       | evaluatePartialGeneric | 1.6%     |
 
 
 ### Full Node Hot-spot Profile
@@ -159,21 +160,21 @@ List of top-10 functions / code locations from a full node profile.
 
 Profiling command used:
 ```
-:
+map --profile srun -N 1 -n 64 examl -t /home/peize/examl-test/case1/49.tree -m PSR -s /home/peize/examl-test/case1/49.unpartitioned.binary -n T1
 ```
 
-| Position | Routine | Time (s) | Time (%) | MPI (%) |
-|----------|---------|----------|----------|---------|
-| 1        |         |          |          |         |
-| 2        |         |          |          |         |
-| 3        |         |          |          |         |
-| 4        |         |          |          |         |
-| 5        |         |          |          |         |
-| 6        |         |          |          |         |
-| 7        |         |          |          |         |
-| 8        |         |          |          |         |
-| 9        |         |          |          |         |
-| 10       |         |          |          |         |
+| Position | Routine          | Tims (%) | MPI (%) |
+| -------- | ---------------- | -------- | ------- |
+| 1        | MPI_Allreduce    | 93.6%    | 93.6%   |
+| 2        | exp              | 2.2%     |         |
+| 3        | __exp_finite     | 1.7%     |         |
+| 4        | newviewIterative | 0.6%     |         |
+| 5        | MPI_Barrier      | 0.3%     | 0.3%    |
+| 6        | newviewGTRCAT    | 0.2%     |         |
+| 7        | execCore         | 0.2%     |         |
+| 8        | __log_finite     | 0.1%     |         |
+| 9        | topLevelMakenewz | <0.1%    | 88.6%   |
+| 10       | saveSubtree      | <0.1%    |         |
 
 ### Strong Scaling Study
 
@@ -219,6 +220,383 @@ On-node scaling study for two architectures.
 | 32    |                |           |
 | 64    |                |           |
 
+## Test Case 2
+
+> examl -t /home/peize/examl-test/case1/49.tree -m GAMMA -s /home/peize/examl-test/case1/49.unpartitioned.binary -n T1
+
+[ReFrame Benchmark 1](#)
+
+```
+../bin/reframe -c benchmark.py -r --performance-report
+```
+
+### Validation
+
+Details of the validation for `Test Case 1`.
+
+
+### ReFrame Output
+
+```
+==============================================================================
+PERFORMANCE REPORT
+------------------------------------------------------------------------------
+     **** 
+------------------------------------------------------------------------------
+```
+
+### On-node Compiler Comparison
+
+Performance comparison of two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+|       |            |            |
+
+
+### Serial Hot-spot Profile
+
+List of top-10 functions / code locations from a serial profile.
+
+Profiling command used:
+
+```
+map --profile srun -N 1 -n 1 examl -t /home/peize/examl-test/case1/49.tree -m GAMMA -s /home/peize/examl-test/case1/49.unpartitioned.binary -n T1
+```
+
+| Position | Routine                 | Time (%) |
+| -------- | ----------------------- | -------- |
+| 1        | newviewGTRGAMMA         | 61.2%    |
+| 2        | coreGTRGAMMA            | 24.4%    |
+| 3        | makenewzIterative       | 4.0%     |
+| 4        | MPI_Allreduce           | 3.7%     |
+| 5        | __log_finite            | 1.6%     |
+| 6        | exp                     | 1.1%     |
+| 7        | __exp_finite            | 1.1%     |
+| 8        | evaluateIterative       | 0.7%     |
+| 9        | log                     | 0.4%     |
+| 10       | \_\_GI\_\_IO_file_fopen | 0.3%     |
+
+
+### Full Node Hot-spot Profile
+
+List of top-10 functions / code locations from a full node profile.
+
+Profiling command used:
+
+```
+map --profile srun -N 1 -n 64 examl -t /home/peize/examl-test/case1/49.tree -m GAMMA -s /home/peize/examl-test/case1/49.unpartitioned.binary -n T1
+```
+
+| Position | Routine                 | Time (%) | MPI (%) |
+| -------- | ----------------------- | -------- | ------- |
+| 1        | newviewGTRGAMMA         | 61.2%    |         |
+| 2        | coreGTRGAMMA            | 24.4%    |         |
+| 3        | makenewzIterative       | 4.0%     |         |
+| 4        | MPI_Allreduce           | 3.7%     | 3.7%    |
+| 5        | __log_finite            | 1.6%     |         |
+| 6        | exp                     | 1.1%     |         |
+| 7        | __exp_finite            | 1.1%     |         |
+| 8        | evaluateIterative       | 0.7%     |         |
+| 9        | log                     | 0.4%     |         |
+| 10       | \_\_GI\_\_IO_file_fopen | 0.3%     |         |
+
+### Strong Scaling Study
+
+On-node scaling study for two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+| 1     |            |            |
+| 2     |            |            |
+| 4     |            |            |
+| 8     |            |            |
+| 16    |            |            |
+| 32    |            |            |
+| 64    |            |            |
+
+
+### Off-Node Scaling Study
+
+Off-node scaling study comparing C6g and C6gn instances.
+
+| Nodes | Cores | C6g  | C6gn |
+| ----- | ----- | ---- | ---- |
+| 1     | 8     |      |      |
+| 1     | 16    |      |      |
+| 1     | 32    |      |      |
+| 1     | 64    |      |      |
+| 2     | 128   |      |      |
+| 4     | 256   |      |      |
+| 8     | 512   |      |      |
+
+
+### On-Node Architecture Comparison
+
+On-node scaling study for two architectures.
+
+| Cores | C6gn (Aarch64) | C5n (X86) |
+| ----- | -------------- | --------- |
+| 1     |                |           |
+| 2     |                |           |
+| 4     |                |           |
+| 8     |                |           |
+| 16    |                |           |
+| 32    |                |           |
+| 64    |                |           |
+
+## Test Case 3
+
+> examl -t /home/peize/examl-test/case2/140.tree -m PSR -s /home/peize/examl-test/case2/140.unpartitioned.binary -n T1
+
+[ReFrame Benchmark 1](#)
+
+```
+../bin/reframe -c benchmark.py -r --performance-report
+```
+
+### Validation
+
+Details of the validation for `Test Case 1`.
+
+
+### ReFrame Output
+
+```
+==============================================================================
+PERFORMANCE REPORT
+------------------------------------------------------------------------------
+     **** 
+------------------------------------------------------------------------------
+```
+
+### On-node Compiler Comparison
+
+Performance comparison of two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+|       |            |            |
+
+
+### Serial Hot-spot Profile
+
+List of top-10 functions / code locations from a serial profile.
+
+Profiling command used:
+
+```
+map --profile srun -N 1 -n 1 examl -t /home/peize/examl-test/case2/140.tree -m PSR -s /home/peize/examl-test/case2/140.unpartitioned.binary -n T1
+```
+
+| Position | Routine                   | Time (%) |
+| -------- | ------------------------- | -------- |
+| 1        | newviewIterative          | 85.0%    |
+| 2        | coreGTRCATPROT            | 7.3%     |
+| 3        | exp                       | 3.1%     |
+| 4        | makenewzIterative         | 1.7%     |
+| 5        | __exp_finite              | 0.9%     |
+| 6        | __log_finite              | 0.7%     |
+| 7        | evaluatePartialGTRCATPROT | 0.5%     |
+| 8        | free                      | 0.2%     |
+| 9        | getxnode                  | 0.2%     |
+| 10       | exp@plt                   | 0.1%     |
+
+
+### Full Node Hot-spot Profile
+
+List of top-10 functions / code locations from a full node profile.
+
+Profiling command used:
+
+```
+map --profile srun -N 1 -n 64 examl -t /home/peize/examl-test/case2/140.tree -m PSR -s /home/peize/examl-test/case2/140.unpartitioned.binary -n T1
+```
+
+| Position | Routine           | Time (%) | MPI (%) |
+| -------- | ----------------- | -------- | ------- |
+| 1        | MPI_Allreduce     | 70.2%    | 70.2%   |
+| 2        | newviewIterative  | 12.0%    |         |
+| 3        | exp               | 8.9%     |         |
+| 4        | __exp_finite      | 6.5%     |         |
+| 5        | coreGTRCATPROT    | 0.7%     |         |
+| 6        | MPI_Barrier       | 0.3%     | 0.3%    |
+| 7        | exp@plt           | 0.2%     |         |
+| 8        | makenewzIterative | 0.2%     |         |
+| 9        | __log_finite      | 0.2%     |         |
+| 10       | malloc            | <0.1%    |         |
+
+### Strong Scaling Study
+
+On-node scaling study for two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+| 1     |            |            |
+| 2     |            |            |
+| 4     |            |            |
+| 8     |            |            |
+| 16    |            |            |
+| 32    |            |            |
+| 64    |            |            |
+
+
+### Off-Node Scaling Study
+
+Off-node scaling study comparing C6g and C6gn instances.
+
+| Nodes | Cores | C6g  | C6gn |
+| ----- | ----- | ---- | ---- |
+| 1     | 8     |      |      |
+| 1     | 16    |      |      |
+| 1     | 32    |      |      |
+| 1     | 64    |      |      |
+| 2     | 128   |      |      |
+| 4     | 256   |      |      |
+| 8     | 512   |      |      |
+
+
+### On-Node Architecture Comparison
+
+On-node scaling study for two architectures.
+
+| Cores | C6gn (Aarch64) | C5n (X86) |
+| ----- | -------------- | --------- |
+| 1     |                |           |
+| 2     |                |           |
+| 4     |                |           |
+| 8     |                |           |
+| 16    |                |           |
+| 32    |                |           |
+| 64    |                |           |
+
+## Test Case 4
+
+> examl -t /home/peize/examl-test/case2/140.tree -m GAMMA -s /home/peize/examl-test/case2/140.unpartitioned.binary -n T1
+
+[ReFrame Benchmark 1](#)
+
+```
+../bin/reframe -c benchmark.py -r --performance-report
+```
+
+### Validation
+
+Details of the validation for `Test Case 1`.
+
+
+### ReFrame Output
+
+```
+==============================================================================
+PERFORMANCE REPORT
+------------------------------------------------------------------------------
+     **** 
+------------------------------------------------------------------------------
+```
+
+### On-node Compiler Comparison
+
+Performance comparison of two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+|       |            |            |
+
+
+### Serial Hot-spot Profile
+
+List of top-10 functions / code locations from a serial profile.
+
+Profiling command used:
+
+```
+map --profile srun -N 1 -n 1 examl -t /home/peize/examl-test/case2/140.tree -m GAMMA -s /home/peize/examl-test/case2/140.unpartitioned.binary -n T1
+```
+
+| Position | Routine              | Time (%) |
+| -------- | -------------------- | -------- |
+| 1        | newviewGTRGAMMAPROT  | 89.5%    |
+| 2        | coreGTRGAMMAPROT     | 7.7%     |
+| 3        | makenewzIterative    | 1.3%     |
+| 4        | __log_finite         | 0.5%     |
+| 5        | __exp_finite         | 0.4%     |
+| 6        | exp                  | 0.2%     |
+| 7        | MPI_Allreduce        | 0.2%     |
+| 8        | MPI_Finalize         | 0.1%     |
+| 9        | computeTraversalInfo | 0.1%     |
+| 10       | main                 | <0.1%    |
+
+
+### Full Node Hot-spot Profile
+
+List of top-10 functions / code locations from a full node profile.
+
+Profiling command used:
+
+```
+map --profile srun -N 1 -n 64 examl -t /home/peize/examl-test/case2/140.tree -m GAMMA -s /home/peize/examl-test/case2/140.unpartitioned.binary -n T1
+```
+
+| Position | Routine             | Time (%) | MPI (%) |
+| -------- | ------------------- | -------- | ------- |
+| 1        | MPI_Allreduce       | 72.8%    | 72.8%   |
+| 2        | newviewGTRGAMMAPROT | 18.3%    |         |
+| 3        | exp                 | 2.2%     |         |
+| 4        | newviewIterative    | 1.8%     |         |
+| 5        | __exp_finite        | 1.7%     |         |
+| 6        | coreGTRGAMMAPROT    | 1.5%     |         |
+| 7        | makenewzIterative   | 0.4%     |         |
+| 8        | MPI_Barrier         | 0.3%     | 0.3%    |
+| 9        | __log_finite        | 0.2%     |         |
+| 10       | malloc              | <0.1%    |         |
+
+### Strong Scaling Study
+
+On-node scaling study for two compilers.
+
+| Cores | Compiler 1 | Compiler 2 |
+| ----- | ---------- | ---------- |
+| 1     |            |            |
+| 2     |            |            |
+| 4     |            |            |
+| 8     |            |            |
+| 16    |            |            |
+| 32    |            |            |
+| 64    |            |            |
+
+
+### Off-Node Scaling Study
+
+Off-node scaling study comparing C6g and C6gn instances.
+
+| Nodes | Cores | C6g  | C6gn |
+| ----- | ----- | ---- | ---- |
+| 1     | 8     |      |      |
+| 1     | 16    |      |      |
+| 1     | 32    |      |      |
+| 1     | 64    |      |      |
+| 2     | 128   |      |      |
+| 4     | 256   |      |      |
+| 8     | 512   |      |      |
+
+
+### On-Node Architecture Comparison
+
+On-node scaling study for two architectures.
+
+| Cores | C6gn (Aarch64) | C5n (X86) |
+| ----- | -------------- | --------- |
+| 1     |                |           |
+| 2     |                |           |
+| 4     |                |           |
+| 8     |                |           |
+| 16    |                |           |
+| 32    |                |           |
+| 64    |                |           |
+
+
+## 
 
 ## Optimisation
 
@@ -263,7 +641,7 @@ Please attach the corresponding apl files.
 Performance analysis of the use of different maths libraries.
 
 
-| Cores | OpenBLAS | ArmPL | BLIS | 
+| Cores | OpenBLAS | ArmPL | BLIS |
 |-------|----------|-------| ---- |
 | 1     |          |       |      |
 | 2     |          |       |      |
