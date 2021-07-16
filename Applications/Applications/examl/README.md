@@ -133,7 +133,7 @@ Performance comparison of two compilers.
 
 ### Serial Hot-spot Profile
 
-List of top-10 functions / code locations from a serial profile.
+List of top-10 functions / code locations from a serial profile. Use GCC compiler.
 
 Profiling command used:
 ```
@@ -156,7 +156,7 @@ map --profile srun -N 1 -n 1 examl -t /home/peize/examl-test/case1/49.tree -m PS
 
 ### Full Node Hot-spot Profile
 
-List of top-10 functions / code locations from a full node profile.
+List of top-10 functions / code locations from a serial profile. Use GCC compiler.
 
 Profiling command used:
 ```
@@ -256,7 +256,7 @@ Performance comparison of two compilers.
 
 ### Serial Hot-spot Profile
 
-List of top-10 functions / code locations from a serial profile.
+List of top-10 functions / code locations from a serial profile. Use GCC compiler.
 
 Profiling command used:
 
@@ -280,7 +280,7 @@ map --profile srun -N 1 -n 1 examl -t /home/peize/examl-test/case1/49.tree -m GA
 
 ### Full Node Hot-spot Profile
 
-List of top-10 functions / code locations from a full node profile.
+List of top-10 functions / code locations from a serial profile. Use GCC compiler.
 
 Profiling command used:
 
@@ -381,7 +381,7 @@ Performance comparison of two compilers.
 
 ### Serial Hot-spot Profile
 
-List of top-10 functions / code locations from a serial profile.
+List of top-10 functions / code locations from a serial profile. Use GCC compiler.
 
 Profiling command used:
 
@@ -405,7 +405,7 @@ map --profile srun -N 1 -n 1 examl -t /home/peize/examl-test/case2/140.tree -m P
 
 ### Full Node Hot-spot Profile
 
-List of top-10 functions / code locations from a full node profile.
+List of top-10 functions / code locations from a serial profile. Use GCC compiler.
 
 Profiling command used:
 
@@ -506,7 +506,7 @@ Performance comparison of two compilers.
 
 ### Serial Hot-spot Profile
 
-List of top-10 functions / code locations from a serial profile.
+List of top-10 functions / code locations from a serial profile. Use GCC compiler.
 
 Profiling command used:
 
@@ -530,7 +530,7 @@ map --profile srun -N 1 -n 1 examl -t /home/peize/examl-test/case2/140.tree -m G
 
 ### Full Node Hot-spot Profile
 
-List of top-10 functions / code locations from a full node profile.
+List of top-10 functions / code locations from a serial profile. Use GCC compiler.
 
 Profiling command used:
 
